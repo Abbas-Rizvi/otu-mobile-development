@@ -18,41 +18,104 @@
         />
 
     <EditText
-        android:id="@+id/noteTItle"
-        android:layout_width="291dp"
-        android:layout_height="39dp"
+        android:id="@+id/noteTitle"
+        android:layout_width="271dp"
+        android:layout_height="41dp"
+        android:hint="Title"
         android:inputType="textShortMessage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.118"
-        android:hint="Title"
 
-        />
+        app:layout_constraintVertical_bias="0.119" />
 
     <EditText
         android:id="@+id/noteDesc"
-        android:layout_width="291dp"
-        android:layout_height="39dp"
-        android:inputType="textShortMessage"
+        android:layout_width="297dp"
+        android:layout_height="190dp"
+        android:hint="Description"
+        android:textAlignment="center"
+        android:inputType="textLongMessage"
+        android:gravity="center|top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
-        android:hint="Description"
-        />
+        app:layout_constraintVertical_bias="0.288" />
 
     <Button
         android:id="@+id/saveNote_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save Note"
+        android:onClick="saveNoteClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.31" />
+        app:layout_constraintVertical_bias="0.891" />
+
+    <Button
+        android:id="@+id/buttonRed"
+        android:layout_width="56dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="376dp"
+        android:text=""
+        android:backgroundTint="@color/red"
+        android:onClick="clickRed"
+        app:layout_constraintEnd_toStartOf="@+id/buttonMaroon"
+        app:layout_constraintHorizontal_bias="0.683"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonBlue"
+        android:layout_width="56dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="376dp"
+        android:layout_marginEnd="20dp"
+        android:text=""
+        android:onClick="clickBlue"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintEnd_toStartOf="@+id/buttonYellow"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonYellow"
+        android:layout_width="56dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="376dp"
+        android:layout_marginEnd="64dp"
+        android:text=""
+        android:onClick="clickYellow"
+        android:backgroundTint="@color/yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonMaroon"
+        android:layout_width="56dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="376dp"
+        android:layout_marginEnd="24dp"
+        android:text=""
+        android:onClick="clickMaroon"
+        android:backgroundTint="@color/maroon"
+        app:layout_constraintEnd_toStartOf="@+id/buttonBlue"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/colourSelected"
+        android:layout_width="32dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="80dp"
+        android:background="@color/red"
+        app:layout_constraintEnd_toStartOf="@+id/noteTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
