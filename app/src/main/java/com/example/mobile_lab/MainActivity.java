@@ -9,13 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SelectListner{
 
     private FloatingActionButton b1;
     private RecyclerView notesRecycler;
@@ -33,16 +34,14 @@ public class MainActivity extends AppCompatActivity {
         b1 = findViewById(R.id.newNote_btn);
 
         notesRecycler = (RecyclerView) findViewById(R.id.noteRecycler);
-
         ArrayList<Note> noteItems = new ArrayList<Note>();
-
         notesRecycler.setLayoutManager(new LinearLayoutManager(this));
 
         db.open();
 
         noteItems = viewNotes();
 
-        noteAdapter = new NoteAdapter(noteItems);
+        noteAdapter = new NoteAdapter(noteItems, this);
         notesRecycler.setAdapter(noteAdapter);
 
 
@@ -60,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 
     public void openNewNotePage(View v){
@@ -78,14 +78,32 @@ public class MainActivity extends AppCompatActivity {
         if (cursor != null) {
 
             while (cursor.moveToNext()) {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(SQLiteManager.FeedEntry._ID));
                 String title = cursor.getString(cursor.getColumnIndexOrThrow(SQLiteManager.FeedEntry.COLUMN_NAME_TITLE));
                 String description = cursor.getString(cursor.getColumnIndexOrThrow(SQLiteManager.FeedEntry.COLUMN_NAME_DESCRIPTION));
                 int color = cursor.getInt(cursor.getColumnIndexOrThrow(SQLiteManager.FeedEntry.COLUMN_NAME_COLOUR));
+                byte[] imageByte = cursor.getBlob(cursor.getColumnIndexOrThrow(SQLiteManager.FeedEntry.COLUMN_NAME_IMAGE));
 
-                allNotes.add(new Note(title, description, color));
+                allNotes.add(new Note(id,title, description, color, imageByte));
             }
             cursor.close();
         }
         return allNotes; // print the notes from db
+    }
+
+    @Override
+    public void onItemClick(Note note) {
+
+        Intent intent = new Intent(this, editNote.class);
+
+
+        intent.putExtra("noteID", note.getId());
+        intent.putExtra("noteTitle", note.getTitle());
+        intent.putExtra("noteDesc", note.getDescription());
+        intent.putExtra("noteColour", note.getColour());
+        intent.putExtra("noteImage", note.getImgBmp());
+
+        startActivity(intent);
+//        Toast.makeText(this, note.getTitle(), Toast.LENGTH_SHORT).show();
     }
 }

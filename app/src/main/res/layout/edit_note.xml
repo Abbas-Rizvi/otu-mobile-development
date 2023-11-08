@@ -36,7 +36,7 @@
         android:layout_height="23dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="16dp"
-        android:text="New Note"
+        android:text="Edit Note"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="20sp"
@@ -62,7 +62,7 @@
         android:layout_height="190dp"
         android:hint="Description"
         android:textAlignment="center"
-        android:inputType="textLongMessage"
+        android:inputType="textMultiLine"
         android:gravity="center|top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -147,13 +147,15 @@
 
     <Button
         android:id="@+id/cancelBtn"
-        android:layout_width="113dp"
-        android:layout_height="45dp"
+        android:layout_width="111dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="44dp"
         android:onClick="cancelClick"
         android:text="@string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/saveNote_btn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976" />
 
@@ -168,5 +170,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.746"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/deleteBtn"
+        android:layout_width="38dp"
+        android:layout_height="39dp"
+        android:clickable="true"
+        android:onClick="deleteClick"
+        app:fabCustomSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.991"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.994"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

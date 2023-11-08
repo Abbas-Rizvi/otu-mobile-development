@@ -5,12 +5,26 @@ public class Note {
     private String title;
     private String description;
     private int colour;
+    private byte[] image;
+    private int id;
 
-    public Note(String title, String description, int colour){
+    public Note(String title, String description, int colour, byte[] image){
 
         this.title = title;
         this.description = description;
         this.colour = colour;
+        this.image = image;
+
+    }
+
+
+    public Note(int id, String title, String description, int colour, byte[] image){
+
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.colour = colour;
+        this.image = image;
 
     }
 
@@ -36,5 +50,17 @@ public class Note {
 
     public void setColour(int colour) {
         this.colour = colour;
+    }
+
+    public byte[] getImgBmp() {
+        return image;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
